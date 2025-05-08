@@ -1,3 +1,4 @@
+
 import {
   appendClientMessage,
   appendResponseMessages,
@@ -35,6 +36,8 @@ import {
 import { after } from 'next/server';
 import type { Chat } from '@/lib/db/schema';
 import { differenceInSeconds } from 'date-fns';
+import { getBankClientData } from '@/hooks/use-bank-data'; // Add this import
+import { console } from 'inspector';
 
 export const maxDuration = 60;
 
@@ -146,13 +149,14 @@ export async function POST(request: Request) {
     });
 
     const streamId = generateUUID();
+    console.log("session.user.id",session.user.id)
+    const clientData =  getBankClientData(session.user.id);
     await createStreamId({ streamId, chatId: id });
-
     const stream = createDataStream({
       execute: (dataStream) => {
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
-          system: systemPrompt({ selectedChatModel, requestHints }),
+          system: systemPrompt({ selectedChatModel, requestHints,clientData }),
           messages,
           maxSteps: 5,
           experimental_activeTools:

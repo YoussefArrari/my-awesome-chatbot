@@ -30,7 +30,7 @@
     "date_prochaine_echeance": "2025-10-23"
   },
   {
-    "client_id": "3",
+    "client_id": "84db6cb0-cc49-4082-b89f-42599df8feb8",
     "solde": 7319.94,
     "statut_carte": "active",
     "date_ouverture": "2021-11-10",
@@ -45,7 +45,7 @@
     "date_prochaine_echeance": "2025-12-30"
   },
   {
-    "client_id": "4",
+    "client_id": "e5722aeb-1cdb-48ae-b740-ac56b743d471",
     "solde": 5986.58,
     "statut_carte": "bloquee",
     "date_ouverture": "2021-04-03",
@@ -60,7 +60,7 @@
     "date_prochaine_echeance": "2025-07-07"
   },
   {
-    "client_id": "5",
+    "client_id": "5e65f29b-b1ff-4be3-8d46-b4371d8985cf",
     "solde": 1560.19,
     "statut_carte": "active",
     "date_ouverture": "2023-09-02",

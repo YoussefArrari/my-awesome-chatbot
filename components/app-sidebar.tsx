@@ -43,7 +43,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                 className=""
               />  
               <div className="text-lg font-semibold px-2  rounded-md cursor-pointer text-blue-800">
-              TRAINIBOT
+              TRINIBOT
               </div>
             </Link>
             <Tooltip>

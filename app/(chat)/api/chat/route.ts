@@ -241,11 +241,12 @@ export async function POST(request: Request) {
     } else {
       return new Response(stream);
     }
-  } catch (_) {
-    return new Response('An error occurred while processing your request!', {
-      status: 500,
-    });
-  }
+  } catch (error) {
+  console.error('POST /chat error:', error);
+  return new Response('An error occurred while processing your request!', {
+    status: 500,
+  });
+}
 }
 
 export async function GET(request: Request) {

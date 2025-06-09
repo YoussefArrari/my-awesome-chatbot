@@ -33,7 +33,7 @@ const config: Config = {
           foreground: 'hsl(var(--popover-foreground))',
         },
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: '#1e40af ',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
@@ -52,9 +52,9 @@ const config: Config = {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: 'hsl(var(--border))',
+        border: '#1e40af ',
         input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        ring: '#1e40af ',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',

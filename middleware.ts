@@ -22,16 +22,16 @@ export async function middleware(request: NextRequest) {
     secret: process.env.AUTH_SECRET,
     secureCookie: !isDevelopmentEnvironment,
   });
+  
+  const isGuest = guestRegex.test(token?.email ?? '');
 
-  if (!token) {
+  // Prevent redirect loop: do not redirect if already on /login or /register
+  if ((!token || isGuest) && !['/login', '/register'].includes(pathname)) {
     const redirectUrl = encodeURIComponent(request.url);
-
     return NextResponse.redirect(
-      new URL(`/api/auth/guest?redirectUrl=${redirectUrl}`, request.url),
+      new URL(`/login?redirectUrl=${redirectUrl}`, request.url),
     );
   }
-
-  const isGuest = guestRegex.test(token?.email ?? '');
 
   if (token && !isGuest && ['/login', '/register'].includes(pathname)) {
     return NextResponse.redirect(new URL('/', request.url));
@@ -47,13 +47,7 @@ export const config = {
     '/api/:path*',
     '/login',
     '/register',
-
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+    // ✅ Exclude static files (images too!)
+    '/((?!_next/static|_next/image|images|favicon.ico|sitemap.xml|robots.txt).*)',
   ],
 };

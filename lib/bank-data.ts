@@ -3,11 +3,11 @@ import bankData from '../data/bankData.json';
 import type { BankClient } from '@/hooks/use-bank-data';
 
 // Server-side function to get bank client data
-export function getBankClientData(userId: string, clientId: number = 10): BankClient | null {
+export function getBankClientData(userId: string, clientId: number): BankClient | null {
   try {
     // In a real app, you might look up which client ID belongs to this user
     // For now, we just use the provided clientId
-    const client = bankData.find(client => client.client_id === clientId);
+    const client = bankData.find(client => client.client_id === clientId.toString());
     return client as BankClient || null;
   } catch (err) {
     console.error('Failed to load bank data:', err);
